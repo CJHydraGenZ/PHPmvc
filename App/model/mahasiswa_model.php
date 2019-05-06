@@ -23,30 +23,58 @@ class mahasiswa_model
     //     ]
     // ];
 
-    private $dbh; //databasse handler
-    private $stmt;
+    // private $dbh; //databasse handler
+    // private $stmt;
 
-    public function __construct()
+    // public function __construct()
 
-    {
-        // koneksi
-        // data source name
-        $dsn  = 'mysql:host=localhost;dbname=phpmvc';
-        try {
-            $this->dbh = new PDO($dsn, 'root', '');
-        } catch (PDOException $e) {
-            die($e->getMessage());
-        }
-    }
+    // {
+    //     // koneksi
+    //     // data source name
+    //     $dsn  = 'mysql:host=localhost;dbname=phpmvc';
+    //     try {
+    //         $this->dbh = new PDO($dsn, 'root', '');
+    //     } catch (PDOException $e) {
+    //         die($e->getMessage());
+    //     }
+    // }
 
     // query
 
+
+
+
+    private $table = 'mahasiswa';
+    private $db;
+
+
+
+    public function __construct()
+    {
+        $this->db = new Database;
+    }
+
+
+
     public function getAllmahasiswa()
     {
-        $this->stmt = $this->dbh->prepare("SELECT * FROM mahasiswa");
-        // hari di isi execute biar aman
-        $this->stmt->execute();
-        // ambil semua datanya
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC); //kembalikan sebagai array assoc
+
+
+
+        // query
+        $this->db->query('SELECT * FROM ' . $this->table);
+        return $this->db->resultSet();
+
+        // $this->stmt = $this->dbh->prepare("SELECT * FROM mahasiswa");
+        // // hari di isi execute biar aman
+        // $this->stmt->execute();
+        // // ambil semua datanya
+        // return $this->stmt->fetchAll(PDO::FETCH_ASSOC); //kembalikan sebagai array assoc
+    }
+    public function getMahasiswaByID($id)
+    {
+        $this->db->query('SELECT * FROM' . $this->table . 'WHERE id=:id');
+        $this->db->bind('id', $id);
+        return $this->db->single();
     }
 }
