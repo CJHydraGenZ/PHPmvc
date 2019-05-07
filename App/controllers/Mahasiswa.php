@@ -57,7 +57,7 @@ class Mahasiswa extends Controller
     public function ubah()
     {
         if ($this->model('mahasiswa_model')->ubahDataMahasiswa($_POST) > 0) {
-            Flasher::setFlash('Good job!', ' You clicked the button!', 'success');
+            Flasher::setFlash('berasil', ' diubah!', 'success');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         } else {
@@ -65,5 +65,14 @@ class Mahasiswa extends Controller
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }
+    }
+
+    public function cari()
+    {
+        $data['judul'] = 'Daftar Mahasiswa';
+        $data['mhs'] = $this->model('mahasiswa_model')->cariDataMahasiswa();
+        $this->view('templates/header', $data);
+        $this->view('mahasiswa/index', $data);
+        $this->view('templates/footer');
     }
 }

@@ -116,7 +116,7 @@ class mahasiswa_model
                     jurusan = :jurusan
                     WHERE id = :id";
 
-                    
+
         $this->db->query($query);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('nim', $data['nim']);
@@ -128,5 +128,14 @@ class mahasiswa_model
 
 
         return $this->db->rowCount();
+    }
+
+    public function cariDataMahasiswa()
+    {
+        $keyword = $_POST['keyword'];
+        $query = "SELECT * FROM mahasiswa WHERE nama LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultSet();
     }
 }

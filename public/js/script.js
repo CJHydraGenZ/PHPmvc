@@ -83,14 +83,6 @@ $(function () {
     });
 
 
-    function munculUpdate() {
-        Swal.fire(
-            'Good job!',
-            'You clicked the button!',
-            'success'
-        );
-        return Swal.fire;
-    }
 
 
 
