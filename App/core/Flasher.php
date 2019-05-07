@@ -14,6 +14,8 @@ class Flasher
     public static function flash()
     {
         if (isset($_SESSION['flash'])) {
+
+
             echo $_SESSION['flash']['aksi'];
 
 

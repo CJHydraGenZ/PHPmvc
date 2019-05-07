@@ -87,13 +87,11 @@ $(function () {
     if (fless) {
 
 
-        setTimeout(function () {
-            Swal.fire(
-                'Data Berasil' + " " + fless,
-                'You clicked the button!',
-                'success'
-            )
-        }, 200);
+        Swal.fire(
+            'Data Berasil' + " " + fless,
+            'You clicked the button!',
+            'success'
+        )
     }
 
 
