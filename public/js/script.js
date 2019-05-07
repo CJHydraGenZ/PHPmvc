@@ -83,7 +83,18 @@ $(function () {
     });
 
 
+    const fless = $('.fless').data('fless');
+    if (fless) {
 
+
+        setTimeout(function () {
+            Swal.fire(
+                'Data Berasil' + " " + fless,
+                'You clicked the button!',
+                'success'
+            )
+        }, 200);
+    }
 
 
     $('.tbn-home').on('click', function () {

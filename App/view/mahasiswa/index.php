@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-lg-6 flaser">
-            <?= Flasher::flash();   ?>
+            <div class="fless" data-fless="<?= Flasher::flash(); ?>"></div>
         </div>
     </div>
 
